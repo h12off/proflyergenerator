@@ -1,4 +1,5 @@
 import React, { useState, useRef, useEffect, useCallback } from 'react';
+import { Analytics } from '@vercel/analytics/react';
 import Flyer, { FlyerContent, FlyerDesign, defaultFlyerDesign, BackgroundMedia, defaultFlyerContent } from './components/Flyer';
 import { useFlyerDownloader, AspectRatio } from './hooks/useFlyerDownloader';
 import { idbGet, idbSet } from './hooks/idb';
@@ -336,6 +337,7 @@ const App: React.FC = () => {
 
   return (
     <div className="bg-gray-50 text-gray-900 min-h-screen font-sans flex flex-col items-center p-3 sm:p-4 lg:p-6">
+      <Analytics />
       {(notification || isTemplateLoading) && (
         <div 
           className={`fixed top-5 right-5 z-50 p-4 rounded-lg shadow-lg text-white ${notification?.type === 'success' ? 'bg-green-600' : 'bg-red-600'}`}
